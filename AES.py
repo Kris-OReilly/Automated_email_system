@@ -3,8 +3,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import csv
 
+
+# Variables for email and password input
 my_email = input("Enter email address:")
-password_key = input("Enter password:")
+password_key = input("Enter app password:") # must have 2FA activeated and created an app password
 
 # SMTP Server and port no for GMAIL.com
 gmail_server= "smtp.gmail.com"
@@ -19,7 +21,7 @@ my_server.starttls()
 my_server.login(my_email, password_key)
 
 
-
+# Content of your email you want to send
 text_content = """
 Hi {Name},
 As you may know our restaurant has been purchased by ***.
@@ -50,7 +52,7 @@ with open("Family.csv") as csv_file:
             msg=message.as_string()
         )
         print("Email sent successfully!")
-        
 
+# Closing the server connection
 my_server.quit()
 
